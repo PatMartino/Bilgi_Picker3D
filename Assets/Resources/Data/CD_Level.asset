@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CD_Level
   m_EditorClassIdentifier: 
   Levels:
-  - PoolList: []
+  - PoolList:
+    - RequiredObjectCount: 3
+    - RequiredObjectCount: 0
   - PoolList: []
   - PoolList: []
