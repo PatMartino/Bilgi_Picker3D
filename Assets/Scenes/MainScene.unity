@@ -432,9 +432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layers:
-  - {fileID: 1702163365}
-  - {fileID: 209343453}
-  - {fileID: 472833764}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1008709398
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalLevelCount: 0
   levelID: 0
-  levelHolder: {fileID: 0}
+  levelHolder: {fileID: 722031100}
 --- !u!1 &1349447264
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1349447265}
+  - component: {fileID: 1349447266}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -591,6 +592,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1349447266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349447264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7465a53c5a7602b47916ee2c98e42f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: 0
 --- !u!1 &1483075478
 GameObject:
   m_ObjectHideFlags: 0

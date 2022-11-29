@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     }
     private void UnSubscribeEvents()
     {
-        CoreGameSignals.Instance.OnChangeGameState += OnChangeGameState;
+        CoreGameSignals.Instance.OnChangeGameState -= OnChangeGameState;
     }
     private void OnDisable()
     {
