@@ -3,7 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StageArea
+  - PoolArea
+  - Collectable
+  - MiniGame
+  - Bum
+  - PowerBar
+  - 2x
+  - 4x
+  - 6x
+  - 8x
+  - 10x
+  - Score
+  - Image1
+  - I1
+  - Image2
+  - Image3
+  - I2
+  - I3
   layers:
   - Default
   - TransparentFX

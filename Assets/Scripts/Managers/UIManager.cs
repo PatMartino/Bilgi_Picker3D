@@ -1,3 +1,4 @@
+using Enums;
 using Signals;
 using UnityEngine;
 
@@ -28,16 +29,16 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitilialize += OnLevelInitialize;
-            CoreGameSignals.Instance.onLevelSuccesful += OnLevelSuccessful;
+            CoreGameSignals.Instance.onLevelInitialize += OnLevelInitialize;
+            CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             CoreGameSignals.Instance.onReset += OnReset;
         }
 
         private void UnSubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitilialize -= OnLevelInitialize;
-            CoreGameSignals.Instance.onLevelSuccesful -= OnLevelSuccessful;
+            CoreGameSignals.Instance.onLevelInitialize -= OnLevelInitialize;
+            CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             CoreGameSignals.Instance.onReset -= OnReset;
         }
@@ -79,6 +80,7 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay?.Invoke();
             CoreUISignals.Instance.onClosePanel?.Invoke(1);
+            CameraSignals.Instance.onSetCameraTarget?.Invoke();
         }
 
         private void OnReset()

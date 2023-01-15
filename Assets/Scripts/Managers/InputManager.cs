@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using Data.UnityObjects;
 using Data.ValueObjects;
+using Keys;
 using Signals;
+using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Keys;
+
 namespace Managers
 {
     public class InputManager : MonoBehaviour
@@ -22,9 +24,9 @@ namespace Managers
 
         #region Private Variables
 
-         private InputData _data;
+        [ShowInInspector] [Header("Data")] private InputData _data;
 
-         private bool _isAvailableForTouch, _isFirstTimeTouchTaken, _isTouching;
+        [Space] [ShowInInspector] private bool _isAvailableForTouch, _isFirstTimeTouchTaken, _isTouching;
 
         private float _currentVelocity; //ref Type
         private float3 _moveVector; //ref Type
@@ -66,14 +68,6 @@ namespace Managers
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onPlay -= OnPlay;
         }
-        private void OnEnableInput()
-        {
-            _isAvailableForTouch = true;
-        }
-        private void OnDisableInput()
-        {
-            _isAvailableForTouch = false;
-        }
 
         private void OnDisable()
         {
@@ -91,16 +85,19 @@ namespace Managers
                 _isTouching = false;
 
                 InputSignals.Instance.onInputReleased?.Invoke();
+                //Debug.LogWarning("Executed ---> onInputReleased");
             }
 
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
             {
                 _isTouching = true;
                 InputSignals.Instance.onInputTaken?.Invoke();
+                //Debug.LogWarning("Executed ---> onInputTaken");
                 if (!_isFirstTimeTouchTaken)
                 {
                     _isFirstTimeTouchTaken = true;
                     InputSignals.Instance.onFirstTimeTouchTaken?.Invoke();
+                    //Debug.LogWarning("Executed ---> onFirstTimeTouchTaken");
                 }
 
                 _mousePosition = Input.mousePosition;
@@ -125,12 +122,13 @@ namespace Managers
 
                         _mousePosition = Input.mousePosition;
 
-                        InputSignals.Instance.onInputDragged?.Invoke(new HorizontalInputParams()
+                        InputSignals.Instance.onInputDragged?.Invoke(new HorizontalnputParams()
                         {
                             HorizontalInputValue = _moveVector.x,
                             HorizontalInputClampNegativeSide = _data.ClampValues.x,
                             HorizontalInputClampPositiveSide = _data.ClampValues.y
                         });
+                        //Debug.LogWarning($"Executed ---> onInputDragged{_moveVector.x}");
                     }
                 }
             }
@@ -141,6 +139,15 @@ namespace Managers
             _isAvailableForTouch = true;
         }
 
+        private void OnEnableInput()
+        {
+            _isAvailableForTouch = true;
+        }
+
+        private void OnDisableInput()
+        {
+            _isAvailableForTouch = false;
+        }
 
         private bool IsPointerOverUIElement()
         {
@@ -160,4 +167,3 @@ namespace Managers
         }
     }
 }
-

@@ -6,5 +6,3 @@ namespace Interfaces
         public void Execute(int value);
     }
 }
-
-

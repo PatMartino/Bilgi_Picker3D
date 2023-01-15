@@ -1,3 +1,4 @@
+using Enums;
 using Extensions;
 using UnityEngine.Events;
 
@@ -10,7 +11,3 @@ namespace Signals
         public UnityAction onCloseAllPanels = delegate { };
     }
 }
-
-
-
-

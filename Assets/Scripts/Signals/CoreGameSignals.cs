@@ -1,37 +1,25 @@
-using UnityEngine;
-using UnityEngine.Events;
+using System;
 using Enums;
+using Extensions;
+using UnityEngine.Events;
 
-public class CoreGameSignals : MonoBehaviour
+namespace Signals
 {
-    #region Singleton
-
-    public static CoreGameSignals Instance;
-
-    private void Awake()
+    public class CoreGameSignals : MonoSingleton<CoreGameSignals>
     {
-        if(Instance!=null && Instance!= this)
-        {
-        Destroy(gameObject);
-         return;
-        }
-        Instance = this;
-        
+        public UnityAction<GameStates> onChangeGameState = delegate { };
+        public UnityAction<int> onLevelInitialize = delegate { };
+        public UnityAction onClearActiveLevel = delegate { };
+        public UnityAction onLevelSuccessful = delegate { };
+        public UnityAction onLevelFailed = delegate { };
+        public UnityAction onNextLevel = delegate { };
+        public UnityAction onRestartLevel = delegate { };
+        public UnityAction onPlay = delegate { };
+        public UnityAction onReset = delegate { };
+        public Func<int> onGetLevelValue = delegate { return 0; };
+
+        public UnityAction<int> onStageAreaSuccessful = delegate { };
+        public UnityAction onStageAreaEntered = delegate { };
+        public UnityAction onFinishAreaEntered = delegate { };
     }
-
-
-    #endregion
-
-    public UnityAction<GameStates> OnChangeGameState = delegate { };
-    public UnityAction<int> onLevelInitilialize = delegate { };
-    public UnityAction onClearActiveLevel = delegate { };
-    public UnityAction onLevelFailed = delegate { };
-    public UnityAction onLevelSuccesful = delegate { };
-    public UnityAction onNextLevel = delegate { };
-    public UnityAction onRestartLevel = delegate { };
-    public UnityAction onReset = delegate { };
-    public UnityAction onPlay = delegate { };
-    public UnityAction onStageAreaEntered = delegate { };
-    public UnityAction onStageAreaSuccesful = delegate { };
 }
-
