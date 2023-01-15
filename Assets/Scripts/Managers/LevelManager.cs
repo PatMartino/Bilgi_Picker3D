@@ -78,7 +78,6 @@ namespace Managers
         private void UnSubscribeEvents()
         {
             CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute;
-            ;
             CoreGameSignals.Instance.onClearActiveLevel -= _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
